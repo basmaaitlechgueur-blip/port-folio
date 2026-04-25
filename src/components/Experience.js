@@ -7,8 +7,8 @@ const experiences = [
     poste: 'Stagiaire Développeuse',
     entreprise: 'ONCA',
     lieu: 'Maroc',
-    debut: 'Février 2026',
-    fin: "Aujourd'hui",
+    debut: 'Avril 2026',
+    fin: 'Juin 2026',
     actuel: true,
     description: 'Stage de fin d\'études au sein de l\'Office National du Conseil Agricole. Participation au développement et à la maintenance d\'applications web internes.',
     taches: [
