@@ -1,0 +1,211 @@
+.experience {
+  background: var(--bg-secondary);
+}
+
+/* ── Timeline ── */
+.timeline {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.timeline__item {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  gap: 1.5rem;
+  position: relative;
+}
+
+/* Ligne + point */
+.timeline__line {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 0.4rem;
+}
+
+.timeline__dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--bg-card);
+  border: 2px solid var(--border-subtle);
+  flex-shrink: 0;
+  transition: all var(--transition);
+  z-index: 1;
+}
+
+.timeline__dot--active {
+  background: var(--exp-color, var(--accent));
+  border-color: var(--exp-color, var(--accent));
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--exp-color, var(--accent)) 20%, transparent);
+  animation: dotPulse 2s ease-in-out infinite;
+}
+
+@keyframes dotPulse {
+  0%, 100% { box-shadow: 0 0 0 4px color-mix(in srgb, var(--exp-color, var(--accent)) 20%, transparent); }
+  50% { box-shadow: 0 0 0 8px color-mix(in srgb, var(--exp-color, var(--accent)) 8%, transparent); }
+}
+
+.timeline__connector {
+  width: 2px;
+  flex-grow: 1;
+  background: var(--border-subtle);
+  margin: 6px 0;
+  min-height: 30px;
+}
+
+/* ── Carte ── */
+.timeline__card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 20px;
+  padding: 1.8rem;
+  margin-bottom: 1.5rem;
+  transition: all var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.timeline__card::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: var(--exp-color, var(--accent));
+  border-radius: 0 2px 2px 0;
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.4s ease;
+}
+
+.timeline__card:hover::before {
+  transform: scaleY(1);
+}
+
+.timeline__card:hover {
+  border-color: var(--exp-color, var(--accent));
+  box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+  transform: translateX(4px);
+}
+
+/* Header */
+.exp-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.exp-card__poste {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  color: var(--text-primary);
+  margin-bottom: 0.4rem;
+}
+
+.exp-card__entreprise {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  color: var(--exp-color, var(--accent));
+  font-weight: 600;
+}
+
+/* Badge */
+.exp-card__dates {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.3rem;
+}
+
+.exp-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.3rem 0.8rem;
+  border-radius: 100px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.exp-badge--actuel {
+  background: color-mix(in srgb, var(--exp-color, var(--accent)) 12%, transparent);
+  border-color: var(--exp-color, var(--accent));
+  color: var(--exp-color, var(--accent));
+}
+
+.exp-badge__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--exp-color, var(--accent));
+  animation: dotPulse2 2s ease-in-out infinite;
+}
+
+@keyframes dotPulse2 {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.exp-card__periode {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+/* Description */
+.exp-card__desc {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.75;
+  margin-bottom: 1.2rem;
+}
+
+/* Tâches */
+.exp-card__taches {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.exp-tache {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.exp-tache__bullet {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--exp-color, var(--accent));
+  flex-shrink: 0;
+}
+
+@media (max-width: 600px) {
+  .timeline__item {
+    grid-template-columns: 24px 1fr;
+    gap: 1rem;
+  }
+
+  .exp-card__header {
+    flex-direction: column;
+  }
+
+  .exp-card__dates {
+    align-items: flex-start;
+  }
+}
